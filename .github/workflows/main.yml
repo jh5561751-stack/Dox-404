@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reloj Digital</title>
+  <style>
+    body {
+      background-color: #000;
+      font-family: monospace;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reloj {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #33CC33;
+      background-color: #000;
+      color: #33CC33;
+      box-shadow: 0 0 10px rgba(51, 204, 51, 0.5);
+    }
+
+    .hora::after {
+      content: ":";
+      margin-left: 10px;
+      color: #33CC33;
+    }
+
+    .minuto::after {
+      content: ":";
+      margin-left: 10px;
+      color: #33CC33;
+    }
+  </style>
+</head>
+<body>
+  <div class="reloj">
+    <div class="hora"></div>
+    <div class="minuto"></div>
+    <div class="segundo"></div>
+  </div>
+  <script>
+    const horaElement = document.querySelector('.hora');
+    const minutoElement = document.querySelector('.minuto');
+    const segundoElement = document.querySelector('.segundo');
+
+    function actualizarReloj() {
+      const fecha = new Date();
+      const hora = fecha.getHours().toString().padStart(2, '0');
+      const minuto = fecha.getMinutes().toString().padStart(2, '0');
+      const segundo = fecha.getSeconds().toString().padStart(2, '0');
+
+      horaElement.textContent = hora;
+      minutoElement.textContent = minuto;
+      segundoElement.textContent = segundo;
+    }
+
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+  </script>
+</body>
+</html>
